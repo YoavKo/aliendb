@@ -1,0 +1,48 @@
+{
+  "alien-warriors": [
+    {
+      "id": 1,
+      "name": "Aurra Belanna",
+      "weapon": "Water gun",
+      "commanderId": 4
+    },
+    {
+      "id": 2,
+      "name": "Cando Dash",
+      "weapon": "Water gun",
+      "commanderId": 4
+    },
+    {
+      "id": 3,
+      "name": "Talon Makkan",
+      "weapon": "Pepper spray",
+      "commanderId": 5
+    }
+  ],
+  "alien-commanders": [
+    {
+      "id": 4,
+      "name": "Malcom Soval",
+      "vehicle": "Bird scooter",
+      "commanderId": 6
+    },
+    {
+      "id": 5,
+      "name": "Fizzus Startakus",
+      "vehicle": "Bird scooter",
+      "commanderId": 6
+    }
+  ],
+  "alien-chief-commanders": [
+    {
+      "id": 6,
+      "name": "Rinya Galen",
+      "vehicle": "Merkava tank"
+    },
+    {
+      "id": 7,
+      "name": "Frida Trualyksoe",
+      "vehicle": "Egged Bus"
+    }
+  ]
+}
