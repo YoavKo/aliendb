@@ -18,8 +18,8 @@ fs.readFile('db.json', (err, data)=>{
         aliens.forEach(alien => {
             const q = insertQueryPrefix + `${alien.id}, ${alien.commanderId || "NULL"}, "${alien.name}" , ${strOrNULL(alien.weapon)}, ${strOrNULL(alien.vehicle)}, \"${type}\");`;
             db.query(q);
-            //console.log(q);
         });
     });
 });
 
+process.exit(0);
