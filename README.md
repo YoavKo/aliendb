@@ -83,4 +83,37 @@ DB modoal:
     | weapon       | varchar(255)    | YES  |     | NULL    |                |
     | vehicle      | varchar(255)    | YES  |     | NULL    |                |
     
+* For getAllien(id) At first I considered turning in three queries to the database, the first to 
+  get the data about the alien himself, the second to get his commander's name and the third to 
+  get the personal numbers of his supervisors, like:
+
+  ```SQL
+        SELECT * FROM aliens WHERE id = <id>;
+        SELECT id FROM aliens WHERE commander_id = <id>;
+        SELECT name FROM aliens WHERE id = <commander_id>;
+    ```
+    
+  Then I realized that I could with a more complex query get all the data in one request to the DB.
+
+  ```SQL
+        SELECT
+            A.*,
+            B.name AS commander_name,
+            GROUP_CONCAT(C.id) AS supevised_ids
+        FROM
+            aliens A
+            LEFT JOIN aliens B ON A.commander_id = B.id
+            LEFT JOIN aliens C ON A.id = C.commander_id
+        WHERE 
+            A.id = <id>;
+    ```
+
+    Empty values are automatically revalued to NULL.
+    for example where <id> in (4, 7):
+
+    | id | commander_id | name             | type                   | weapon | vehicle      | commander_name | supevised_ids |
+    |----|--------------|------------------|------------------------|--------|--------------|----------------|---------------|
+    |  4 |            6 | Malcom Soval     | alien-commanders       | NULL   | Bird scooter | Rinya Galen    | 1,2           |
+    |  7 |         NULL | Frida Trualyksoe | alien-chief-commanders | NULL   | Egged Bus    | NULL           | NULL          |
+    
 

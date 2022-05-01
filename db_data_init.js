@@ -9,7 +9,7 @@ const db = mysql.createConnection({
 
 db.query('DELETE FROM aliens;');
 
-const strOrNULL = (str) => { return str ? `${str}` : null; };
+const strOrNULL = (str) => { return str ? str : null; };
 
 const insertQuery = `INSERT INTO aliens(id, commander_id, name, weapon, vehicle, type) 
                      VALUES ( ?, ?, ?, ?, ?, ?)`;
