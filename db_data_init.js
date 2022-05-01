@@ -9,17 +9,26 @@ const db = mysql.createConnection({
 
 db.query('DELETE FROM aliens;');
 
-const strOrNULL = (str) => { return str ? `\"${str}\"` : "NULL"; };
+const strOrNULL = (str) => { return str ? `${str}` : null; };
 
-const insertQueryPrefix = 'INSERT INTO aliens(id, commander_id, name, weapon, vehicle, type) VALUES (';
+const insertQuery = `INSERT INTO aliens(id, commander_id, name, weapon, vehicle, type) 
+                     VALUES ( ?, ?, ?, ?, ?, ?)`;
+
 fs.readFile('db.json', (err, data)=>{
     const parseData = Object.entries(JSON.parse(data)).reverse();
+    const promises = [];
+
     parseData.forEach(([type, aliens]) => {
         aliens.forEach(alien => {
-            const q = insertQueryPrefix + `${alien.id}, ${alien.commanderId || "NULL"}, "${alien.name}" , ${strOrNULL(alien.weapon)}, ${strOrNULL(alien.vehicle)}, \"${type}\");`;
-            db.query(q);
+            const commander_id = alien.commanderId || null;
+            const weapon = strOrNULL(alien.weapon);
+            const vehicle = strOrNULL(alien.vehicle);
+            const valuseArray = [ alien.id, commander_id, alien.name, weapon, vehicle, type];
+            
+            promises.push(db.promise().query(insertQuery, valuseArray));
         });
     });
+    Promise.all(promises).then(() => process.exit());
 });
 
-process.exit(0);
+
