@@ -7,12 +7,12 @@ Running the app:
 ----------------
 to set the app for work you need to run the next instarcions:
 
- # |      Description              |             cmd
--------------------------------------------------------------------
- 1 | build and run DB container    |  $ docker-compose up -d --build
- 2 | install node packages         |  $ npm i
- 3 | insert initial data into DB   |  $ node db_data_init.js
- 4 | finaly run the app            |  $ node app.js
+| # |      Description             |               cmd                 |
+|---|------------------------------|-----------------------------------|
+| 1 | build and run DB container   |  $ docker-compose up -d --build   |
+| 2 | install node packages        |  $ npm i                          |
+| 3 | insert initial data into DB  |  $ node db_data_init.js           |
+| 4 | finaly run the app           |  $ node app.js                    |
 
 
 API Docomantation:
@@ -69,14 +69,14 @@ DB modoal:
 
 * I chose a direct approach in designing one table of data, as follows:
     mysql> DESCRIBE aliens;
-    +--------------+-----------------+------+-----+---------+----------------+
+
     | Field        | Type            | Null | Key | Default | Extra          |
-    +--------------+-----------------+------+-----+---------+----------------+
+    |--------------|-----------------|------|-----|---------|----------------|
     | id           | bigint unsigned | NO   | PRI | NULL    | auto_increment |
     | commander_id | bigint unsigned | YES  | MUL | NULL    |                |
     | name         | varchar(255)    | YES  |     | NULL    |                |
     | type         | varchar(255)    | YES  |     | NULL    |                |
     | weapon       | varchar(255)    | YES  |     | NULL    |                |
     | vehicle      | varchar(255)    | YES  |     | NULL    |                |
-    +--------------+-----------------+------+-----+---------+----------------+
+    
 
