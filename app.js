@@ -62,7 +62,7 @@ const getAll = function(ctx){
             ctx.response.body = res[0];
             ctx.set('content-type', 'application/json');
             ctx.status = 200;
-            console.log(ctx.response);
+            //console.log(ctx.response);
         });
 };
 
@@ -72,7 +72,7 @@ const getAlien = function(ctx){
     .then((res) => {
         alien = res[0][0];
         ctx.body = alien;
-        console.log(ctx.response);
+        //console.log(ctx.response);
     });
 };
 
@@ -88,9 +88,9 @@ const updateAlien = function(ctx){
     if(validateUpdate(valuseArray)) {
         db.promise().query(querysTamlates.updateId, valuseArray)
             .then((res) => {
-                console.log(res);
+                //console.log(res);
                 ctx.status = 204;
-                console.log(ctx.response);
+                //console.log(ctx.response);
             });
     } else {
         //TODO handle bad reqwest.
@@ -112,9 +112,9 @@ const newAlien = function(ctx){
     if(validateInsert(valuseArray)) {
         db.promise().query(querysTamlates.insert, valuseArray)
             .then((res) => {
-                console.log(res);
+                //console.log(res);
                 ctx.status = 201;
-                console.log(ctx.response);
+                //console.log(ctx.response);
             });
     } else {
         //TODO handle bad reqwest.
