@@ -64,6 +64,14 @@ I haved asket to implament the folloing commands;
 Home Exam Implemantions Notes:
 ==============================
 
+Unfinished Things
+------------------
+* I didn't imlamented the input validation, I have place in the script to fill it in.
+* I failed in the attempt to edit the API response metadata, such as status code, message, 
+    response content type, etc... 
+* If I had not burned loads and loads of time on the issue of promises and async syntax,
+    I would be happy to dockerise also the node serve. it seems to be not very complicated.
+
 DB modoal:
 ----------
 * I considered handle the input validation by SQL constraints by holdings tables which
